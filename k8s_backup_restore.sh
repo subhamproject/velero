@@ -27,7 +27,7 @@ fi
 printf "> Creating s3 bucket.."
 BUCKET=subham
 echo " OK"
-mc alias set minio http://$(/sbin/ip -o -4 addr list eth1 | awk '{print $4}' | cut -d/ -f1):9000 admin Strong#Pass#
+mc alias set minio http://127.0.0.1:9000 admin Strong#Pass#
 sleep 5
 if [  $(mc ls minio|grep $BUCKET|wc -l) -lt 1 ];then
 mc mb minio/$BUCKET
