@@ -1,0 +1,17 @@
+
+velero backup create sample-namespace-backup --include-namespaces sample
+
+velero backup logs sample-namespace-backup
+
+velero get backups
+
+velero restore create sample-namespace-backup --from-backup sample-namespace-backup
+
+velero backup logs sample-namespace-backup
+
+velero get backup
+
+
+velero backup create first --include-namespaces argocd
+
+#https://medium.com/adg-vit/backing-up-restoring-and-migrating-kubernetes-cluster-with-velero-61ce454b7a2b -> IMP

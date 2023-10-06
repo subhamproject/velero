@@ -1,0 +1,8 @@
+
+https://velero.io/docs/v1.10/backup-reference/
+
+
+https://medium.com/adg-vit/backing-up-restoring-and-migrating-kubernetes-cluster-with-velero-61ce454b7a2b
+
+
+https://thenewstack.io/how-to-create-an-object-storage-bucket-with-minio-object-storage/

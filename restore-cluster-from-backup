@@ -1,0 +1,5 @@
+#!/bin/bash
+
+velero restore create restore-from-backup --from-backup argocd
+
+kubectl patch svc argocd-server -n argocd --type='json' -p '[{"op":"replace","path":"/spec/type","value":"NodePort"},{"op":"replace","path":"/spec/ports/1/nodePort","value":30070}]'
