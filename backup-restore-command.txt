@@ -1,0 +1,38 @@
+velero -n kube-system create schedule daily \
+  --schedule="0 0 * * *" \
+  --ttl 2160h0m0s
+
+
+Backup:
+
+# create a backup containing all resources
+velero backup create backup1
+
+# create a backup including only the nginx namespace
+velero backup create nginx-backup --include-namespaces nginx
+
+# create a backup excluding the velero and default namespaces
+velero backup create backup2 --exclude-namespaces velero,default
+
+# view the YAML for a backup that doesn't snapshot volumes, without sending it to the server
+velero backup create backup3 --snapshot-volumes=false -o yaml
+
+# wait for a backup to complete before returning from the command
+velero backup create backup4 --wait
+
+Restore:
+
+# create a restore named "restore-1" from backup "backup-1"
+velero restore create restore-1 --from-backup backup-1
+
+# create a restore with a default name ("backup-1-<timestamp>") from backup "backup-1"
+velero restore create --from-backup backup-1
+
+# create a restore from the latest successful backup triggered by schedule "schedule-1"
+velero restore create --from-schedule schedule-1
+
+# create a restore from the latest successful OR partially-failed backup triggered by schedule "schedule-1"
+velero restore create --from-schedule schedule-1 --allow-partially-failed
+
+# create a restore for only persistentvolumeclaims and persistentvolumes within a backup
+velero restore create --from-backup backup-2 --include-resources persistentvolumeclaims,persistentvolumes
