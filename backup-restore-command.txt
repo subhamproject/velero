@@ -3,6 +3,23 @@ velero -n kube-system create schedule daily \
   --ttl 2160h0m0s
 
 
+# Daily Backup, 7 days retention policy
+
+velero create schedule wordpress-bkup-daily-ret-7d \
+--schedule="0 7 * * *" \
+--ttl 168h0m0s \
+--include-namespaces wordpress-ns
+# Daily Backup, 7 days retention policy
+velero schedule create duokey-bkup-daily-ret-7d --schedule="0 0 * * *" --ttl 168h0m0s --selector app=duokey
+# Weekly Backup, 30 days retention policy
+velero schedule create duokey-bkup-weekly-ret-30d --schedule="1 0 */7 * *" --ttl 720h0m0s --selector app=duokey
+# Monthly Backup, 12 months retention policy
+velero schedule create duokey-bkup-monthly-ret-12m --schedule="0 8 1 * *" --ttl 8760h0m0s --selector app=duokey
+# Yearly Backup, 3 years retention policy
+velero schedule create duokey-bkup-yearly-ret-3y --schedule="0 16 1 5 *" --ttl 43800h0m0s --selector app=duokey
+
+
+
 Backup:
 
 # create a backup containing all resources
