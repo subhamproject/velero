@@ -1,17 +1,19 @@
 
-velero backup create sample-namespace-backup --include-namespaces sample
+velero backup create sample-namespace-backup --include-namespaces sample --wait
+
+ velero backup create subham --wait
 
 velero backup logs sample-namespace-backup
 
 velero get backups
 
-velero restore create sample-namespace-backup --from-backup sample-namespace-backup
+velero restore create sample-namespace-backup --from-backup sample-namespace-backup --wait
 
 velero backup logs sample-namespace-backup
 
 velero get backup
 
 
-velero backup create first --include-namespaces argocd
+velero backup create first --include-namespaces argocd --wait
 
 #https://medium.com/adg-vit/backing-up-restoring-and-migrating-kubernetes-cluster-with-velero-61ce454b7a2b -> IMP
