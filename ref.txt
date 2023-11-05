@@ -6,3 +6,19 @@ https://medium.com/adg-vit/backing-up-restoring-and-migrating-kubernetes-cluster
 
 
 https://thenewstack.io/how-to-create-an-object-storage-bucket-with-minio-object-storage/
+
+
+
+https://medium.com/uleap/velero-io-kubernetes-data-protection-made-easy-part1-deploy-475a287e477a -> IMP
+
+
+https://medium.com/uleap/velero-io-kubernetes-dataprotection-made-easy-part2-69ab128177a -> IMP
+
+
+Velero Client requires a locally stored KubeConfig file.
+
+&!Finish
+By default, Velero is installed/configured in the Velero namespace. If a different namespace is used during deployment, you can easily adapt/configure the Velero client:
+
+velero client config set namespace=velero-backup -n velero-backup
+Please check Part 2 of the Data Protection series to get an advanced view on
